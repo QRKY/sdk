@@ -16,6 +16,7 @@ module.exports = function (qrk, request) {
     };
     */
 
+    // Create the path to the API request, include properties from `spec` as needed
     path = '/';
 
     // Include a `body : body` if this is a PUT or POST request
