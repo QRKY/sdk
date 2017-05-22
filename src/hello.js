@@ -3,7 +3,7 @@
 
 module.exports = function (qrk, request) {
 
-  qrk.sayHello = function (spec, cb) {
+  qrk.getHello = function (spec, cb) {
     var path;
 
     spec = spec || {};
