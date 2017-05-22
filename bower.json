@@ -1,0 +1,21 @@
+{
+  "name": "qrk-sdk",
+  "main": "dist/qrk-sdk.min.js",
+  "version": "0.0.1",
+  "description": "SDK for QRK",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "qrk",
+    "sdk"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

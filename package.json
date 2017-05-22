@@ -1,0 +1,21 @@
+{
+  "name": "qrk-sdk",
+  "version": "0.0.1",
+  "description": "QRK SDK",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "node_modules/jslint/bin/jslint.js --color 'src/**/*.js' '*.json' 'tests/**/*.js' && node_modules/jasmine-node/bin/jasmine-node --verbose tests/*.spec.js && node_modules/browserify/bin/cmd.js -e src/index.js --insert-global-vars global --standalone qrk --no-builtins| node_modules/uglify-js/bin/uglifyjs -o dist/qrk-sdk.min.js",
+    "test": "node_modules/jslint/bin/jslint.js --color 'src/**/*.js' '*.json' 'tests/**/*.js' && node_modules/jasmine-node/bin/jasmine-node --verbose tests/*.spec.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "js-md5": "0.4.1",
+    "promise-polyfill": "5.0.0"
+  },
+  "devDependencies": {
+    "browserify": "13.0.0",
+    "jasmine-node": "1.14.5",
+    "jslint": "0.9.6",
+    "uglify": "0.1.5"
+  }
+}
