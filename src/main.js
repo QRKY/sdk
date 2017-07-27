@@ -23,6 +23,9 @@ module.exports = function (httpRequest) {
     that.protocol = spec.protocol || 'https';
     return that;
   };
+
+  constructor.login = require('./login')(httpRequest);
+  constructor.userCreate = require('./userCreate')(httpRequest);
   require('./hello')(qrk, request);
 
   return constructor;
