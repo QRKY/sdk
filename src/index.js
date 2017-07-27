@@ -6,7 +6,7 @@
     main = require('./main')(httpRequest);
 
   if (global.hasOwnProperty('window') && global.window === global) {
-    global.Prestigos = main;
+    global.Qrk = main;
   } else {
     module.exports = main;
   }
