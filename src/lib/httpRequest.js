@@ -57,9 +57,11 @@ module.exports = function httpRequest(opts, cb) {
       opts.body = strBody;
     }
     global.fetch(url, opts).then(function (res) {
-      if (typeof cb === 'function') {
-        cb({ statusCode : res.status, body : res.json() });
-      }
+      res.json().then(function (json) {
+        if (typeof cb === 'function') {
+          cb({ statusCode : res.status, body : json });
+        }
+      });
     });
   }
 
