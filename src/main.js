@@ -15,7 +15,6 @@ module.exports = function (httpRequest) {
     }, {});
 
     that.sign = createSigner(spec.hash);
-    that.username = spec.username;
     that.domain = spec.domain || 'api.qrk.mx';
     if (spec.port) {
       that.port = spec.port;
@@ -26,6 +25,8 @@ module.exports = function (httpRequest) {
 
   constructor.login = require('./login')(httpRequest);
   constructor.userCreate = require('./userCreate')(httpRequest);
+  require('./user')(qrk, request);
+  require('./cards')(qrk, request);
   require('./hello')(qrk, request);
 
   return constructor;
