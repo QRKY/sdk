@@ -24,6 +24,7 @@ module.exports = function (httpRequest) {
   };
 
   constructor.login = require('./login')(httpRequest);
+  constructor.loginFacebook = require('./loginFacebook')(httpRequest);
   constructor.userCreate = require('./userCreate')(httpRequest);
   require('./user')(qrk, request);
   require('./cards')(qrk, request);
