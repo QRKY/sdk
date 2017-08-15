@@ -1,4 +1,4 @@
-/*jslint indent:2, regexp:true*/
+/*jslint node: true, indent:2, regexp:true*/
 'use strict';
 var pick      = require('./lib/pick'),
   Promise     = global.Promise || require('promise-polyfill'),
@@ -20,6 +20,7 @@ function defer() {
 module.exports = function (httpRequest) {
   return function (spec, cb) {
     var opts, deferred = defer();
+    spec = spec || {};
 
     opts = {
       host    : spec.domain || 'api.qrk.mx',
