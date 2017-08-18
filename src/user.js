@@ -1,4 +1,4 @@
-/*jslint indent:2, regexp:true*/
+/*jslint node: true, indent:2, regexp:true*/
 'use strict';
 
 module.exports = function (qrk, request) {
@@ -18,6 +18,17 @@ module.exports = function (qrk, request) {
     var path;
 
     path = '/users/' + spec.user + '/balance';
+
+    return request.call(this, {
+      path    : path,
+      method  : 'GET'
+    }, cb);
+  };
+
+  qrk.userTransactionsGet = function (spec, cb) {
+    var path;
+
+    path = '/users/' + spec.user + '/transactions';
 
     return request.call(this, {
       path    : path,
