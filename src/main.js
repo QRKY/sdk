@@ -28,6 +28,7 @@ module.exports = function (httpRequest) {
   constructor.userCreate = require('./userCreate')(httpRequest);
   require('./password-recovery')(constructor, httpRequest);
   require('./cards')(qrk, request);
+  require('./groups')(qrk, request);
   require('./hello')(qrk, request);
   require('./promotions')(qrk, request);
   require('./recharges')(qrk, request);
