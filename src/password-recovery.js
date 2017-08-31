@@ -18,6 +18,37 @@ function defer() {
 }
 
 module.exports = function (constructor, httpRequest) {
+  constructor.mailAvailable = function (spec, cb) {
+    var opts, deferred = defer();
+    spec = spec || {};
+
+    opts = {
+      host    : spec.domain || 'api.qrk.mx',
+      protocol: spec.protocol || 'https',
+      path    : '/mail-available/' + spec.email || '',
+      method  : 'GET'
+    };
+
+    httpRequest(opts, function (res) {
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        if (cb) {
+          cb(null, res.body);
+          return;
+        }
+        deferred.resolve(res.body);
+        return;
+      }
+      if (cb) {
+        cb(res.body, null);
+      }
+      deferred.reject(res.body);
+    });
+
+    if (!cb) {
+      return deferred.promise;
+    }
+  };
+
   constructor.recoverPassword = function (spec, cb) {
     var opts, deferred = defer();
     spec = spec || {};
