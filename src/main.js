@@ -32,6 +32,7 @@ module.exports = function (httpRequest) {
   require('./hello')(qrk, request);
   require('./promotions')(qrk, request);
   require('./recharges')(qrk, request);
+  require('./transfers')(qrk, request);
   require('./user')(qrk, request);
 
   return constructor;
