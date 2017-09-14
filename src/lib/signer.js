@@ -1,7 +1,7 @@
 /*jslint indent:2, regexp:true*/
 'use strict';
 var sortedJSON = require('./sortedJSON'),
-  md5 = require('js-md5');
+  md5 = require('react-native-md5').hex_md5;
 
 module.exports = function createSigner(hash) {
   return function (url, body) {
