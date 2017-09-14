@@ -30,7 +30,8 @@ module.exports = function (qrk, request) {
       method  : 'POST',
       body    : {
         name: spec.name || '',
-        members: spec.members || []
+        members: spec.members || [],
+        description: spec.description || []
       }
     }, cb);
   };
