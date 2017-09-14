@@ -3,6 +3,23 @@
 
 module.exports = function (qrk, request) {
 
+  qrk.userTransfer = function (spec, cb) {
+    var path;
+
+    spec = spec || {};
+
+    path = '/users/' + (spec.user || '') + '/balance/transfer';
+
+    return request.call(this, {
+      path    : path,
+      method  : 'POST',
+      body    : {
+        mail: spec.email,
+        amount: spec.amount
+      }
+    }, cb);
+  };
+
   qrk.userTransferMulti = function (spec, cb) {
     var path;
 

@@ -1,5 +1,6 @@
 /*jslint node: true, indent:2, regexp:true*/
 'use strict';
+var pick      = require('./lib/pick');
 
 module.exports = function (qrk, request) {
 
@@ -11,6 +12,31 @@ module.exports = function (qrk, request) {
     return request.call(this, {
       path    : path,
       method  : 'GET'
+    }, cb);
+  };
+
+  qrk.userUpdate = function (spec, cb) {
+    var path;
+
+    spec = spec || {};
+
+    path = '/users/' + (spec.user || '');
+
+    return request.call(this, {
+      path    : path,
+      method  : 'PUT',
+      body    : pick([
+        'address',
+        'conekta_id',
+        'location',
+        'name',
+        'lastname',
+        'lastname2',
+        'phone',
+        'profile_pic',
+        'state',
+        'zipcode'
+      ], spec)
     }, cb);
   };
 
