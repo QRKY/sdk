@@ -61,4 +61,18 @@ module.exports = function (qrk, request) {
       method  : 'GET'
     }, cb);
   };
+
+  qrk.userS3CredentialsGet = function (spec, cb) {
+    var path;
+
+    path = '/users/' + spec.user + '/s3/credentials';
+
+    return request.call(this, {
+      path: path,
+      method: 'POST',
+      body: {
+        filename: spec.filename || ''
+      }
+    }, cb);
+  };
 };

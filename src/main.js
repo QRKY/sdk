@@ -29,6 +29,7 @@ module.exports = function (httpRequest) {
   require('./password-recovery')(constructor, httpRequest);
   require('./beneficiaries')(qrk, request);
   require('./cards')(qrk, request);
+  require('./documents')(qrk, request);
   require('./groups')(qrk, request);
   require('./hello')(qrk, request);
   require('./promotions')(qrk, request);
