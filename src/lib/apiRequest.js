@@ -38,6 +38,10 @@ module.exports = function (httpRequest) {
     };
     hasBody = ['POST', 'PUT'].indexOf(opts.method) > -1;
 
+    if (!hasBody && spec.hasOwnProperty('body')) {
+      throw new Error('Only POST and PUT request can send a body data');
+    }
+
     if (hasBody) {
       opts.body = data;
     }
