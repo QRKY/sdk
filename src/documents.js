@@ -38,14 +38,11 @@ module.exports = function (qrk, request) {
 
     spec = spec || {};
 
-    path = '/users/' + (spec.user || '') + '/documents';
+    path = '/users/' + (spec.user || '') + '/documents/' + (spec.kind || '');
 
     return request.call(this, {
       path    : path,
-      method  : 'DELETE',
-      body: pick([
-        'kind'
-      ], spec)
+      method  : 'DELETE'
     }, cb);
   };
 };
