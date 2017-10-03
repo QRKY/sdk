@@ -33,6 +33,7 @@ module.exports = function (httpRequest) {
   require('./documents')(qrk, request);
   require('./groups')(qrk, request);
   require('./hello')(qrk, request);
+  require('./insurances')(qrk, request);
   require('./promotions')(qrk, request);
   require('./recharges')(qrk, request);
   require('./transfers')(qrk, request);
