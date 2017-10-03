@@ -48,7 +48,8 @@ module.exports = function (qrk, request) {
       method  : 'PUT',
       body    : {
         name: spec.name || '',
-        members: spec.members || null
+        members: spec.members || null,
+        description: spec.description || []
       }
     }, cb);
   };
