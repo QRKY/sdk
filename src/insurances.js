@@ -46,7 +46,8 @@ module.exports = function (qrk, request) {
       path    : path,
       method  : 'POST',
       body    : {
-        insurances: spec.insurances || []
+        insurances: spec.insurances || [],
+        combo: spec.combo || undefined
       }
     }, cb);
   };
@@ -64,6 +65,7 @@ module.exports = function (qrk, request) {
       body    : {
         insurances: spec.insurances || [],
         type: spec.type || '',
+        combo: spec.combo || undefined,
         detail: spec.detail || undefined
       }
     }, cb);
