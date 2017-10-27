@@ -62,6 +62,17 @@ module.exports = function (qrk, request) {
     }, cb);
   };
 
+  qrk.userTransactionsTaxableGet = function (spec, cb) {
+    var path;
+
+    path = '/users/' + spec.user + '/transactions/taxable';
+
+    return request.call(this, {
+      path    : path,
+      method  : 'GET'
+    }, cb);
+  };
+
   qrk.userS3CredentialsGet = function (spec, cb) {
     var path;
 
