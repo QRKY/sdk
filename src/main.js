@@ -29,6 +29,7 @@ module.exports = function (httpRequest) {
   constructor.combosGet = require('./combosGet')(httpRequest);
   constructor.userCreate = require('./userCreate')(httpRequest);
   require('./password-recovery')(constructor, httpRequest);
+  require('./info')(constructor, httpRequest);
   require('./beneficiaries')(qrk, request);
   require('./cards')(qrk, request);
   require('./combos')(qrk, request);
