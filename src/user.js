@@ -73,6 +73,17 @@ module.exports = function (qrk, request) {
     }, cb);
   };
 
+  qrk.userResendVerifyMail = function (spec, cb) {
+    var path;
+
+    path = '/verify/resend/' + spec.user;
+
+    return request.call(this, {
+      path    : path,
+      method  : 'GET'
+    }, cb);
+  };
+
   qrk.userS3CredentialsGet = function (spec, cb) {
     var path;
 
