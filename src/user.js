@@ -73,6 +73,20 @@ module.exports = function (qrk, request) {
     }, cb);
   };
 
+  qrk.userTransactionsTaxableSet = function (spec, cb) {
+    var path;
+
+    path = '/users/' + spec.user + '/transactions/taxable';
+
+    return request.call(this, {
+      path    : path,
+      method  : 'POST',
+      body    : pick([
+        'transactions',
+      ], spec)
+    }, cb);
+  };
+
   qrk.userResendVerifyMail = function (spec, cb) {
     var path;
 
