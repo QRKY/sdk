@@ -73,6 +73,17 @@ module.exports = function (qrk, request) {
     }, cb);
   };
 
+  qrk.userTransactionsTaxedGet = function (spec, cb) {
+    var path;
+
+    path = '/users/' + spec.user + '/transactions/taxed';
+
+    return request.call(this, {
+      path    : path,
+      method  : 'GET'
+    }, cb);
+  };
+
   qrk.userTransactionsTaxableSet = function (spec, cb) {
     var path;
 
