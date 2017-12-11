@@ -70,4 +70,20 @@ module.exports = function (qrk, request) {
       }
     }, cb);
   };
+
+  qrk.userInsurancesToogleRenew = function (spec, cb) {
+    var path;
+
+    spec = spec || {};
+
+    path = '/users/' + (spec.user || '') + '/insurances/renew';
+
+    return request.call(this, {
+      path    : path,
+      method  : 'POST',
+      body    : {
+        id: spec.id
+      }
+    }, cb);
+  };
 };
