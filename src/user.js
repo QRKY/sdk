@@ -28,6 +28,7 @@ module.exports = function (qrk, request) {
       body    : pick([
         'address',
         'conekta_id',
+        'firebase_id',
         'location',
         'name',
         'lastname',
