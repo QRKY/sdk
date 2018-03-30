@@ -3,7 +3,15 @@
 var sortedJSON = require('./sortedJSON');
 
 module.exports = function httpRequest(opts, cb) {
-  var http = 'https', request, strBody, xhr, XHR, url;
+  var http = 'https', request, strBody, xhr, XHR, url, timeout, amount, didTimeOut;
+
+  amount = opts.timeout;
+  timeout = setTimeout(function () {
+    didTimeOut = true;
+    if (typeof cb === 'function') {
+      cb({statusCode: null, body: {error: 'Timeout'}});
+    }
+  }, amount);
 
   strBody = '';
   XHR = global.XMLHttpRequest || false;
@@ -58,9 +66,15 @@ module.exports = function httpRequest(opts, cb) {
     }
     global.fetch(url, opts).then(function (res) {
       res.json().then(function (json) {
+        clearTimeout(timeout);
         if (typeof cb === 'function') {
           cb({ statusCode : res.status, body : json });
         }
+      }).catch(function (err) {
+        if (didTimeOut) {
+          return;
+        }
+        cb({statusCode: null, body: err});
       });
     });
   }
@@ -72,6 +86,10 @@ module.exports = function httpRequest(opts, cb) {
     xhr.onreadystatechange = function () {
       var value;
 
+      clearTimeout(timeout);
+      if (didTimeOut) {
+        return;
+      }
       if (xhr.readyState !== 4) {
         return;
       }

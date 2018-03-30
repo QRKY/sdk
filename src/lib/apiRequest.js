@@ -32,6 +32,7 @@ module.exports = function (httpRequest) {
     opts = {
       host    : this.domain,
       port    : this.port,
+      timeout : this.timeout,
       protocol: this.protocol,
       path    : path,
       method  : spec.method || 'GET'
