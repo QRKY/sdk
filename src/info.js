@@ -1,6 +1,7 @@
 /*jslint node: true, indent:2, regexp:true*/
 'use strict';
 var pick      = require('./lib/pick'),
+  createOpts  = require('./lib/baseObj'),
   Promise     = global.Promise || require('promise-polyfill'),
   R           = require('ramda');
 
@@ -22,12 +23,10 @@ module.exports = function (constructor, httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/info/insurances',
       method  : 'GET'
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -53,12 +52,10 @@ module.exports = function (constructor, httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/info/tour',
       method  : 'GET'
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -84,12 +81,10 @@ module.exports = function (constructor, httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/info/insurances/types',
       method  : 'GET'
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {

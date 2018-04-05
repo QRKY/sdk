@@ -1,6 +1,7 @@
 /*jslint node: true, indent:2, regexp:true*/
 'use strict';
 var pick      = require('./lib/pick'),
+  createOpts  = require('./lib/baseObj'),
   Promise     = global.Promise || require('promise-polyfill');
 
 function defer() {
@@ -21,12 +22,10 @@ module.exports = function (httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/promoters/' + spec.code,
       method  : 'GET'
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {

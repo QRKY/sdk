@@ -1,6 +1,7 @@
 /*jslint node: true, indent:2, regexp:true*/
 'use strict';
 var pick      = require('./lib/pick'),
+  createOpts  = require('./lib/baseObj'),
   Promise     = global.Promise || require('promise-polyfill'),
   R           = require('ramda');
 
@@ -22,12 +23,10 @@ module.exports = function (constructor, httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/mail-available/' + spec.email || '',
       method  : 'GET'
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -53,15 +52,13 @@ module.exports = function (constructor, httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/recover-password',
       method  : 'POST',
       body    : {
         mail: spec.email || ''
       }
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -87,9 +84,7 @@ module.exports = function (constructor, httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/recover-password/activate',
       method  : 'POST',
       body    : {
@@ -97,7 +92,7 @@ module.exports = function (constructor, httpRequest) {
         code: spec.code || '',
         password: spec.password || ''
       }
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {
