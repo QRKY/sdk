@@ -66,7 +66,8 @@ module.exports = function (qrk, request) {
         insurances: spec.insurances || [],
         type: spec.type || '',
         combo: spec.combo || undefined,
-        detail: spec.detail || undefined
+        detail: spec.detail || undefined,
+        promoter_code: spec.promoter_code || ''
       }
     }, cb);
   };
