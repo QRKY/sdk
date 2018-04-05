@@ -37,6 +37,7 @@ module.exports = function (httpRequest) {
         'sex',
         'password',
         'phone',
+        'promoter_code',
         'state',
         'type',
         'zipcode',
