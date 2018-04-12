@@ -19,6 +19,7 @@ module.exports = function (httpRequest) {
     if (spec.port) {
       that.port = spec.port;
     }
+    that.timeout = spec.timeout || 5000;
     that.protocol = spec.protocol || 'https';
     return that;
   };

@@ -1,6 +1,6 @@
 {
   "name": "qrk-sdk",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "QRK SDK",
   "main": "src/index.js",
   "scripts": {

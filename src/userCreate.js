@@ -1,6 +1,7 @@
 /*jslint node: true, indent:2, regexp:true*/
 'use strict';
 var pick      = require('./lib/pick'),
+  createOpts  = require('./lib/baseObj'),
   Promise     = global.Promise || require('promise-polyfill'),
   R           = require('ramda');
 
@@ -22,9 +23,7 @@ module.exports = function (httpRequest) {
     var opts, deferred = defer();
     spec = spec || {};
 
-    opts = {
-      host    : spec.domain || 'api.qrk.mx',
-      protocol: spec.protocol || 'https',
+    opts = createOpts(spec, {
       path    : '/users',
       method  : 'POST',
       body    : pick([
@@ -43,7 +42,7 @@ module.exports = function (httpRequest) {
         'zipcode',
         'code'
       ], spec)
-    };
+    });
 
     httpRequest(opts, function (res) {
       if (res.statusCode >= 200 && res.statusCode < 300) {
